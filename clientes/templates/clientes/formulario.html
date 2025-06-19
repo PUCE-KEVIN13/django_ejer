@@ -1,0 +1,48 @@
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+<html lang="es"> <!-- Establece que el idioma del documento es español -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Usa codificación UTF-8 para caracteres latinos -->
+    <title>Registro de Clientes</title> <!-- Título que aparecerá en la pestaña del navegador -->
+
+    {% load static %} <!-- Carga el sistema de archivos estáticos de Django -->
+
+    <!-- Enlaza la hoja de estilos CSS desde la carpeta 'static/clientes/style.css' -->
+    <link rel="stylesheet" href="{% static 'clientes/style.css' %}">
+
+    <!-- Enlaza el script JavaScript (validación del formulario) -->
+    <script defer src="{% static 'clientes/script.js' %}"></script>
+</head>
+
+<body>
+    <!-- Contenedor principal centrado -->
+    <div class="container">
+        <!-- Tarjeta visual que contiene el formulario -->
+        <div class="card">
+            <h1>Registro de Cliente</h1> <!-- Título de la tarjeta -->
+
+            <!-- Formulario HTML que envía datos por POST -->
+            <form method="post" id="formularioCliente">
+                {% csrf_token %} <!-- Token de seguridad obligatorio en Django para formularios POST -->
+
+                <!-- Campo de entrada para el nombre -->
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+
+                <!-- Campo de entrada para el email -->
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+
+                <!-- Botón para enviar el formulario -->
+                <button type="submit">Enviar</button>
+
+                <!-- Espacio para mostrar mensajes de validación con JavaScript -->
+                <p class="mensaje" id="mensajeValidacion"></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    body { background: red; }
+</style>

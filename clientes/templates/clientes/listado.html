@@ -1,0 +1,35 @@
+<!-- Indica que el documento está escrito en HTML5 -->
+<!DOCTYPE html>
+
+<!-- Etiqueta principal del documento, idioma establecido a español -->
+<html lang="es">
+
+<head>
+    <!-- Define el tipo de codificación de caracteres como UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!-- Título de la pestaña en el navegador -->
+    <title>Clientes Registrados</title>
+
+    <!-- Carga la etiqueta 'static' de Django para acceder a archivos estáticos -->
+    {% load static %}
+
+    <!-- Enlaza el archivo de estilos CSS ubicado en 'static/clientes/style.css' -->
+    <link rel="stylesheet" href="{% static 'clientes/style.css' %}">
+</head>
+
+<body>
+    <!-- Encabezado principal de la página -->
+    <h1>Listado de Cliente</h1>
+
+    <!-- Lista no ordenada que mostrará los clientes registrados -->
+    <ul>
+        <!-- Bucle for de Django que recorre cada cliente en la lista 'clientes' pasada desde la vista -->
+        {% for cliente in clientes %}
+            <!-- Cada cliente se muestra como un ítem de lista, con su nombre y correo electrónico -->
+            <li>{{ cliente.nombre }} - {{ cliente.email }}</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
